@@ -9,7 +9,17 @@
 		{ id: 4, name: 'Do the dishes' },
 		{ id: 5, name: 'Clean the house' }
 	]);
+
+	const { data } = $props();
 </script>
+
+<!-- SLOW LOAD TEST -->
+<div>Fast Res: {data.instaMessage}</div>
+{#await data.message}
+	<div>loading slow res...</div>
+{:then message}
+	<div>Slow Res: {message}</div>
+{/await}
 
 <!-- NEW STATE -->
 <button onclick={() => counter.inc()}>Count is {counter.count}</button>
